@@ -24,4 +24,4 @@ class CandidateFullSerializer(serializers.ModelSerializer):
 class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate
-        fields = ['name', 'email_id', 'date', 'status']
+        fields = ['id', 'name', 'email_id', 'date', 'status']
