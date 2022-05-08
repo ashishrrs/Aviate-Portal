@@ -24,8 +24,12 @@ def get_candidates(request):
 @api_view(['GET'])
 def get_genders(request):
     gender_objects = Gender.objects.all().order_by('gender')
-    serializer = GenderSerializer(gender_objects, many=True)
-    return Response(serializer.data)
+    l = []
+    for obj in gender_objects:
+        l.append(obj.gender)
+    response = {}
+    response["genders"] = l
+    return Response(response)
 
 
 @api_view(['GET'])
