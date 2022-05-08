@@ -1,4 +1,6 @@
 
+from ast import Expression
+from xml.etree.ElementInclude import include
 from rest_framework import serializers
 from .models import *
 
@@ -16,9 +18,13 @@ class StatusSerializer(serializers.ModelSerializer):
 
 
 class CandidateFullSerializer(serializers.ModelSerializer):
+    status_val = serializers.CharField(source='status.status')
+    gender_val = serializers.CharField(source='gender.gender')
+
     class Meta:
         model = Candidate
-        exclude = ('date', 'slug')
+        fields = ['id', 'name', 'email_id', 'date', 'status_val', 'gender_val',
+                  'description', 'contact_No', 'age', 'resume_url', 'address', 'experience']
 
 
 class CandidateSerializer(serializers.ModelSerializer):
