@@ -34,9 +34,13 @@ def get_genders(request):
 
 @api_view(['GET'])
 def get_status(request):
-    status_objects = Status.objects.all().order_by('status')
-    serializer = StatusSerializer(status_objects, many=True)
-    return Response(serializer.data)
+    status_objects = Status.objects.all().order_by('id')
+    l = []
+    for obj in status_objects:
+        l.append(obj.status)
+    response = {}
+    response["status"] = l
+    return Response(response)
 
 
 @api_view(['POST'])
