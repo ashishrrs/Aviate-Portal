@@ -22,6 +22,8 @@ class CandidateFullSerializer(serializers.ModelSerializer):
 
 
 class CandidateSerializer(serializers.ModelSerializer):
+    status_val = serializers.CharField(source='status.status')
+
     class Meta:
         model = Candidate
-        fields = ['id', 'name', 'email_id', 'date', 'status']
+        fields = ['id', 'name', 'email_id', 'date', 'status_val']
