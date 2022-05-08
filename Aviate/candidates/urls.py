@@ -8,7 +8,7 @@ urlpatterns = [
     path('candidates/pages', get_candidates_by_page),
     path('genders', get_genders),
     path('status', get_status),
-    path('candidate/add/', add_candidate),
+    path('candidate/add', add_candidate),
     path('candidate/info/<slug:slug_text>', get_candidate_info),
     path('candidate/change-status', change_status),
     path('file-upload', file_upload),
