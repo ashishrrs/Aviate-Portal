@@ -44,7 +44,10 @@ def get_candidates_by_page(request):
         candidate_objects = Candidate.objects.all().order_by('-date')
         p = Paginator(candidate_objects, int(items))
         serializer = CandidateSerializer(p.page(int(page_number)), many=True)
-        return Response(serializer.data)
+        response = {}
+        response["items"] = serializer.data
+        response["total_pages"] = p.num_pages
+        return Response(response)
     except Exception as Arg:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         print(exc_type, exc_tb.tb_lineno)
