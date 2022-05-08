@@ -35,7 +35,7 @@ def get_status(request):
     return Response(serializer.data)
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_candidates_by_page(request):
     data = JSONParser().parse(request)
     try:
