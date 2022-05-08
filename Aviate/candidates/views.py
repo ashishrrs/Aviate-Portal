@@ -117,7 +117,7 @@ def add_candidate(request):
         gender_object = Gender.objects.get_or_create(gender=gender)[0]
         candidate = Candidate.objects.create(name=name,
                                              description=description, contact_No=contact_No, email_id=email_id,
-                                             age=age, gender=gender_object, address=address, experience=experience, url=url)
+                                             age=age, gender=gender_object, address=address, experience=experience, resume_url=url)
         candidate.save()
         return Response(status=status.HTTP_201_CREATED)
     except Exception as Arg:
