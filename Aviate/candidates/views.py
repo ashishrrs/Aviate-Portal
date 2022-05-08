@@ -40,7 +40,7 @@ def get_candidates_by_page(request):
     data = JSONParser().parse(request)
     try:
         items = data.get('items', '')
-        page_number = data.get('page-number', '')
+        page_number = data.get('pagenumber', '')
         candidate_objects = Candidate.objects.all().order_by('-date')
         p = Paginator(candidate_objects, int(items))
         serializer = CandidateSerializer(p.page(int(page_number)), many=True)
